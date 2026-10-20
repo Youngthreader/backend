@@ -239,7 +239,9 @@ export class MilestonesService {
   }
 
   async list(): Promise<Milestone[]> {
-    return this.milestoneRepo.find();
+    return this.milestoneRepo.find({
+      relations: { repository: true, issues: true },
+    });
   }
 
   /**
